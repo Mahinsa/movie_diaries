@@ -5,36 +5,36 @@ const NavBar = ({ user }) => {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
       <Link className="navbar-brand" to="/">
-        MovieHub
+        MovieDiaries
       </Link>
 
       <div className="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link className="nav-link" to="/">
-              Home <span className="sr-only">(current)</span>
+              Home
             </Link>
-          </li>
+          </li> */}
           <li className="nav-item">
             <Link className="nav-link" to="/genre_settings">
-              Genre Settings
+              Genres
             </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link className="nav-link" to="/customers">
               Customers
             </Link>
-          </li>
+          </li> */}
           <li className="nav-item">
             <Link className="nav-link" to="/rentals">
               Rentals
             </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link className="nav-link" to="/rental_form">
               Rentals Form
             </Link>
-          </li>
+          </li> */}
           {user && (
             <React.Fragment>
               <li className="nav-item">

@@ -19,8 +19,8 @@ function checkGenreUsageUrl(id, name) {
   return `${apiEndpoint}/checkUsage/${id}/${name}`;
 }
 
-function getGenres() {
-  return http.get(apiEndpoint);
+function getGenres(abortController) {
+  return http.get(apiEndpoint, { signal: abortController.signal });
 }
 
 function getGenre(genreId) {

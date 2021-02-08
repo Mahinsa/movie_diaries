@@ -12,15 +12,23 @@ class GenreSettings extends Component {
     genres: [],
   };
 
+  abortController = new AbortController();
+
   async componentDidMount() {
     try {
-      const { data: genres } = await genreService.getGenres();
+      const { data: genres } = await genreService.getGenres(
+        this.abortController
+      );
       this.setState({
         genres,
       });
     } catch (ex) {
       console.log("error", ex);
     }
+  }
+
+  componentWillUnmount() {
+    this.abortController.abort();
   }
 
   handlePageChange = (page) => {

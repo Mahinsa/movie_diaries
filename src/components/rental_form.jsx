@@ -25,10 +25,14 @@ class RentalForm extends Component {
     selectedValuePlaceholderMovie: "select",
   };
 
+  abortController = new AbortController();
+
   async componentDidMount() {
     try {
       const { data: customers } = await customerService.getCustomers();
-      const { data: movies } = await movieService.getMovies();
+      const { data: movies } = await movieService.getMovies(
+        this.abortController
+      );
       var options_customer = [];
       var options_movie = [];
 
@@ -51,6 +55,10 @@ class RentalForm extends Component {
     } catch (ex) {
       console.log("error", ex);
     }
+  }
+
+  componentWillUnmount() {
+    this.abortController.abort();
   }
 
   schemaData = {
@@ -179,7 +187,7 @@ class RentalForm extends Component {
             )}
           </div>
           <div className="form-group">
-            <label>movieId</label>
+            <label>Movie Name</label>
             <Select
               onChange={this.handleChangeMovie}
               value={movieId}
@@ -191,7 +199,7 @@ class RentalForm extends Component {
             )}
           </div>
           <div className="form-group">
-            <label>dateReturned</label>
+            <label>Due Date</label>
             <input
               onChange={this.handleOnChange}
               type="date"
@@ -204,7 +212,7 @@ class RentalForm extends Component {
             )}
           </div>
           <div className="form-group">
-            <label>rentalFee</label>
+            <label>Rental Fee</label>
             <input
               onChange={this.handleOnChange}
               type="text"

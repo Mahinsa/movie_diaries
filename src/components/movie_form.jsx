@@ -18,6 +18,8 @@ class MovieForm extends Component {
     selectedValuePlaceholder: "select",
   };
 
+  abortController = new AbortController();
+
   schemaData = {
     title: Joi.string().min(5).max(50).required().label("Title"),
     genreId: Joi.string().required().label("Genre"),
@@ -61,7 +63,9 @@ class MovieForm extends Component {
         const { data: genre } = await genreService.getGenre(movieObj.genreId);
         this.setState({ selectedValuePlaceholder: genre.name });
       }
-      const { data: genres } = await genreService.getGenres();
+      const { data: genres } = await genreService.getGenres(
+        this.abortController
+      );
 
       if (genres) {
         genres.map((genre) =>
@@ -73,6 +77,10 @@ class MovieForm extends Component {
     } catch (ex) {
       console.log("error", ex);
     }
+  }
+
+  componentWillUnmount() {
+    this.abortController.abort();
   }
 
   handleOnChange = ({ target: input }) => {

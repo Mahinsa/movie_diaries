@@ -7,8 +7,8 @@ function movieUrl(id) {
   return `${apiEndpoint}/${id}`;
 }
 
-function getMovies() {
-  return http.get(apiEndpoint);
+function getMovies(abortController) {
+  return http.get(apiEndpoint, { signal: abortController.signal });
 }
 
 function getMovie(movieId) {

@@ -14,14 +14,20 @@ class Movies extends Component {
     currentPage: 1,
     genres: [],
     selectedGenre: {
-      name: "action",
+      name: "All Genres",
     },
   };
 
+  abortController = new AbortController();
+
   async componentDidMount() {
     try {
-      const { data: movies } = await movieService.getMovies();
-      const { data: genres } = await genreService.getGenres();
+      const { data: movies } = await movieService.getMovies(
+        this.abortController
+      );
+      const { data: genres } = await genreService.getGenres(
+        this.abortController
+      );
       this.setState({
         movies,
         genres: [{ _id: "all_genres", name: "All Genres" }, ...genres],
@@ -29,6 +35,10 @@ class Movies extends Component {
     } catch (ex) {
       console.log("error", ex);
     }
+  }
+
+  componentWillUnmount() {
+    this.abortController.abort();
   }
 
   handleGenreSelect = (Genre) => {
@@ -76,6 +86,23 @@ class Movies extends Component {
           {user ? (
             <Link to="/genre" className="btn btn-secondary btn-sm newGenreBtn">
               New Genre
+            </Link>
+          ) : (
+            ""
+          )}
+          {user ? (
+            <Link
+              to="/rental_form"
+              className="btn btn-success btn-sm newGenreBtn"
+            >
+              New Rental
+            </Link>
+          ) : (
+            ""
+          )}
+          {user ? (
+            <Link to="/customers" className="btn btn-dark btn-sm newGenreBtn">
+              New Customer
             </Link>
           ) : (
             ""
