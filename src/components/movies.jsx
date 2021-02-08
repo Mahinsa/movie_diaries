@@ -5,6 +5,7 @@ import movieService from "../services/movieService";
 import genreService from "../services/genreService";
 import { paginate } from "./utils/paginate";
 import { Link } from "react-router-dom";
+import CoverImg from "../assests/images/cover7.jpg";
 import "./css/common.css";
 
 class Movies extends Component {
@@ -69,7 +70,16 @@ class Movies extends Component {
         : movies.filter((m) => m.genre.name === selectedGenre.name);
     const pagintedMovies = paginate(filteredMovies, currentPage, pageSize);
     return (
-      <div className="row">
+      <div
+        className="row"
+        style={{
+          backgroundImage: `url(${CoverImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: 937,
+          width: 1935,
+        }}
+      >
         <div className="col-md-3 mt-100" style={{ paddingLeft: 250 }}>
           <Genres
             genres={genres}
@@ -126,16 +136,49 @@ class Movies extends Component {
               {pagintedMovies.map((movie) => {
                 return (
                   <tr key={movie._id}>
-                    <td>
+                    <td
+                      style={{
+                        color: "#000",
+                        fontWeight: 650,
+                        textDecoration: "none",
+                      }}
+                    >
                       {user ? (
-                        <Link to={`/movie/${movie._id}`}>{movie.title}</Link>
+                        <Link
+                          to={`/movie/${movie._id}`}
+                          style={{
+                            color: "#000",
+                            fontWeight: 650,
+                            textDecoration: "none",
+                          }}
+                        >
+                          {movie.title}
+                        </Link>
                       ) : (
                         movie.title
                       )}
                     </td>
-                    <td>{movie.genre.name}</td>
-                    <td>{movie.numberInStock}</td>
-                    <td>{movie.dailyRentalRate}</td>
+                    <td
+                      style={{
+                        fontWeight: 500,
+                      }}
+                    >
+                      {movie.genre.name}
+                    </td>
+                    <td
+                      style={{
+                        fontWeight: 500,
+                      }}
+                    >
+                      {movie.numberInStock}
+                    </td>
+                    <td
+                      style={{
+                        fontWeight: 500,
+                      }}
+                    >
+                      {movie.dailyRentalRate}
+                    </td>
                     <td>
                       {user ? (
                         <Link
