@@ -19,7 +19,11 @@ const Pagination = (props) => {
                 page === currentPage ? "page-item active" : "page-item"
               }
             >
-              <button className="page-link" onClick={() => onPageChange(page)}>
+              <button
+                className="page-link"
+                onClick={() => onPageChange(page)}
+                style={{ opacity: 0.8, fontSize: 19 }}
+              >
                 {page}
               </button>
             </li>

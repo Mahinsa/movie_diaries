@@ -3,6 +3,7 @@ import Joi from "joi";
 import genreService from "../services/genreService";
 import movieService from "../services/movieService";
 import Select from "react-select";
+import CoverImg from "../assests/images/cover_new_movie1.jpg";
 import "./css/common.css";
 
 class MovieForm extends Component {
@@ -148,66 +149,85 @@ class MovieForm extends Component {
     } = this.state.errors;
 
     return (
-      <div className="container mt-100">
-        <form>
-          <div className="form-group">
-            <label>Title</label>
-            <input
-              onChange={this.handleOnChange}
-              type="text"
-              className="form-control"
-              name="title"
-              value={title}
-            />
-            {title_err && <div className="alert alert-danger">{title_err}</div>}
-          </div>
-          <div className="form-group">
-            <label>Genre</label>
-            <Select
-              onChange={this.handleChange}
-              value={genreId}
-              options={options}
-              placeholder={selectedValuePlaceholder}
-            />
-            {genreId_err && (
-              <div className="alert alert-danger">{genreId_err}</div>
-            )}
-          </div>
-          <div className="form-group">
-            <label>Number In Stock</label>
-            <input
-              onChange={this.handleOnChange}
-              type="text"
-              className="form-control"
-              name="numberInStock"
-              value={numberInStock}
-            />
-            {numberInStock_err && (
-              <div className="alert alert-danger">{numberInStock_err}</div>
-            )}
-          </div>
-          <div className="form-group">
-            <label>Daily Rental Rate</label>
-            <input
-              onChange={this.handleOnChange}
-              type="text"
-              className="form-control"
-              name="dailyRentalRate"
-              value={dailyRentalRate}
-            />
-            {dailyRentalRate_err && (
-              <div className="alert alert-danger">{dailyRentalRate_err}</div>
-            )}
-          </div>
-          <button
-            onClick={
-              id === "new" ? this.handleSaveMovie : this.handleUpdateMovie
-            }
-            className="btn btn-primary btn-sm"
-          >
-            {id === "new" ? "Save" : "Update"}
-          </button>
-        </form>
+      <div
+        className="row"
+        style={{
+          backgroundImage: `url(${CoverImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "fixed",
+          height: 937,
+          width: 1925,
+          marginLeft: -5,
+        }}
+      >
+        <div className="container mt-100">
+          <form style={{ fontSize: 20, fontWeight: 640 }}>
+            <div className="form-group">
+              <label>Title</label>
+              <input
+                style={{ opacity: 0.8 }}
+                onChange={this.handleOnChange}
+                type="text"
+                className="form-control"
+                name="title"
+                value={title}
+              />
+              {title_err && (
+                <div className="alert alert-danger">{title_err}</div>
+              )}
+            </div>
+            <div className="form-group">
+              <label>Genre</label>
+              <Select
+                style={{ opacity: 0.8 }}
+                onChange={this.handleChange}
+                value={genreId}
+                options={options}
+                placeholder={selectedValuePlaceholder}
+              />
+              {genreId_err && (
+                <div className="alert alert-danger">{genreId_err}</div>
+              )}
+            </div>
+            <div className="form-group">
+              <label>Number In Stock</label>
+              <input
+                style={{ opacity: 0.8 }}
+                onChange={this.handleOnChange}
+                type="text"
+                className="form-control"
+                name="numberInStock"
+                value={numberInStock}
+              />
+              {numberInStock_err && (
+                <div className="alert alert-danger">{numberInStock_err}</div>
+              )}
+            </div>
+            <div className="form-group">
+              <label>Daily Rental Rate</label>
+              <input
+                style={{ opacity: 0.8 }}
+                onChange={this.handleOnChange}
+                type="text"
+                className="form-control"
+                name="dailyRentalRate"
+                value={dailyRentalRate}
+              />
+              {dailyRentalRate_err && (
+                <div className="alert alert-danger">{dailyRentalRate_err}</div>
+              )}
+            </div>
+            <button
+              onClick={
+                id === "new" ? this.handleSaveMovie : this.handleUpdateMovie
+              }
+              className="btn btn-primary btn"
+              style={{ fontSize: 23, fontWeight: 640 }}
+            >
+              {id === "new" ? "Save" : "Update"}
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

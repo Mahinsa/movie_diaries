@@ -87,14 +87,22 @@ class Movies extends Component {
             onGenreSelect={this.handleGenreSelect}
           />
           {user ? (
-            <Link to="/movie/new" className="btn btn-info btn-sm newMovieBtn">
+            <Link
+              to="/movie/new"
+              className="btn btn-info btn newMovieBtn"
+              style={{ opacity: 0.8, fontSize: 25 }}
+            >
               New Movie
             </Link>
           ) : (
             ""
           )}
           {user ? (
-            <Link to="/genre" className="btn btn-secondary btn-sm newGenreBtn">
+            <Link
+              to="/genre"
+              className="btn btn-secondary btn newGenreBtn"
+              style={{ opacity: 0.8, fontSize: 25 }}
+            >
               New Genre
             </Link>
           ) : (
@@ -103,7 +111,8 @@ class Movies extends Component {
           {user ? (
             <Link
               to="/rental_form"
-              className="btn btn-success btn-sm newGenreBtn"
+              className="btn btn-success btn newGenreBtn"
+              style={{ opacity: 0.8, fontSize: 25 }}
             >
               New Rental
             </Link>
@@ -111,7 +120,11 @@ class Movies extends Component {
             ""
           )}
           {user ? (
-            <Link to="/customers" className="btn btn-dark btn-sm newGenreBtn">
+            <Link
+              to="/customers"
+              className="btn btn-dark btn newGenreBtn"
+              style={{ opacity: 0.8, fontSize: 25 }}
+            >
               New Customer
             </Link>
           ) : (
@@ -122,25 +135,68 @@ class Movies extends Component {
           className="col-md-9 mt-100"
           style={{ paddingRight: 250, paddingLeft: 100 }}
         >
-          <table className="table mt-20">
+          <table
+            className="table mt-20"
+            style={{
+              border: "hidden",
+            }}
+          >
             <thead>
               <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Genre</th>
-                <th scope="col">Number In Stock</th>
-                <th scope="col">Daily Rental Rate</th>
+                <th
+                  scope="col"
+                  style={{
+                    fontSize: 19,
+                  }}
+                >
+                  Title
+                </th>
+                <th
+                  scope="col"
+                  style={{
+                    fontSize: 19,
+                  }}
+                >
+                  Genre
+                </th>
+                <th
+                  scope="col"
+                  style={{
+                    fontSize: 19,
+                  }}
+                >
+                  Number In Stock
+                </th>
+                <th
+                  scope="col"
+                  style={{
+                    fontSize: 19,
+                  }}
+                >
+                  Daily Rental Rate
+                </th>
                 <th></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody
+              style={{
+                border: "hidden",
+              }}
+            >
               {pagintedMovies.map((movie) => {
                 return (
-                  <tr key={movie._id}>
+                  <tr
+                    key={movie._id}
+                    style={{
+                      border: "hidden",
+                    }}
+                  >
                     <td
                       style={{
                         color: "#000",
-                        fontWeight: 650,
+                        fontWeight: 640,
                         textDecoration: "none",
+                        fontSize: 17,
                       }}
                     >
                       {user ? (
@@ -148,8 +204,9 @@ class Movies extends Component {
                           to={`/movie/${movie._id}`}
                           style={{
                             color: "#000",
-                            fontWeight: 650,
+                            fontWeight: 640,
                             textDecoration: "none",
+                            fontSize: 17,
                           }}
                         >
                           {movie.title}
@@ -161,6 +218,7 @@ class Movies extends Component {
                     <td
                       style={{
                         fontWeight: 500,
+                        fontSize: 17,
                       }}
                     >
                       {movie.genre.name}
@@ -168,6 +226,7 @@ class Movies extends Component {
                     <td
                       style={{
                         fontWeight: 500,
+                        fontSize: 17,
                       }}
                     >
                       {movie.numberInStock}
@@ -175,6 +234,7 @@ class Movies extends Component {
                     <td
                       style={{
                         fontWeight: 500,
+                        fontSize: 17,
                       }}
                     >
                       {movie.dailyRentalRate}

@@ -18,6 +18,7 @@ const Genres = (props) => {
                     ? "list-group-item active"
                     : "list-group-item"
                 }
+                style={{ fontWeight: 500, textAlign: "center", fontSize: 21 }}
               >
                 {genre.name}
               </a>
