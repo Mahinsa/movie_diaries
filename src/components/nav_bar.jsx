@@ -15,11 +15,11 @@ const NavBar = ({ user }) => {
               Home
             </Link>
           </li> */}
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link className="nav-link" to="/genre_settings">
               Genres
             </Link>
-          </li>
+          </li> */}
           {/* <li className="nav-item">
             <Link className="nav-link" to="/customers">
               Customers

@@ -165,7 +165,7 @@ class MovieForm extends Component {
             <div className="form-group">
               <label>Title</label>
               <input
-                style={{ opacity: 0.8 }}
+                style={{ fontSize: 20, fontWeight: 640, opacity: 0.8 }}
                 onChange={this.handleOnChange}
                 type="text"
                 className="form-control"
@@ -179,7 +179,7 @@ class MovieForm extends Component {
             <div className="form-group">
               <label>Genre</label>
               <Select
-                style={{ opacity: 0.8 }}
+                style={{ fontSize: 20, fontWeight: 640, opacity: 0.8 }}
                 onChange={this.handleChange}
                 value={genreId}
                 options={options}
@@ -192,7 +192,7 @@ class MovieForm extends Component {
             <div className="form-group">
               <label>Number In Stock</label>
               <input
-                style={{ opacity: 0.8 }}
+                style={{ fontSize: 20, fontWeight: 640, opacity: 0.8 }}
                 onChange={this.handleOnChange}
                 type="text"
                 className="form-control"
@@ -206,7 +206,7 @@ class MovieForm extends Component {
             <div className="form-group">
               <label>Daily Rental Rate</label>
               <input
-                style={{ opacity: 0.8 }}
+                style={{ fontSize: 20, fontWeight: 640, opacity: 0.8 }}
                 onChange={this.handleOnChange}
                 type="text"
                 className="form-control"

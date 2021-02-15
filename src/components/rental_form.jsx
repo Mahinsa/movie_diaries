@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import Joi from "joi";
 import rentalService from "../services/rentalService";
 import customerService from "../services/customerService";
+import movieService from "../services/movieService";
+import Select from "react-select";
+import $ from "jquery";
+import CoverImg from "../assests/images/cover_new_genre.jpg";
 import "jquery-confirm/dist/jquery-confirm.min.css";
 import "jquery-confirm/dist/jquery-confirm.min.js";
 import "font-awesome/css/font-awesome.min.css";
-import Select from "react-select";
-import $ from "jquery";
 import "./css/common.css";
-import movieService from "../services/movieService";
 
 class RentalForm extends Component {
   state = {
@@ -172,65 +173,79 @@ class RentalForm extends Component {
     } = this.state.errors;
 
     return (
-      <div className="container mt-100">
-        <form>
-          <div className="form-group">
-            <label>Customer Name</label>
-            <Select
-              onChange={this.handleChangeCustomer}
-              value={customerId}
-              options={options_customer}
-              placeholder={selectedValuePlaceholderCustomer}
-            />
-            {customerId_err && (
-              <div className="alert alert-danger">{customerId_err}</div>
-            )}
-          </div>
-          <div className="form-group">
-            <label>Movie Name</label>
-            <Select
-              onChange={this.handleChangeMovie}
-              value={movieId}
-              options={options_movie}
-              placeholder={selectedValuePlaceholderMovie}
-            />
-            {movieId_err && (
-              <div className="alert alert-danger">{movieId_err}</div>
-            )}
-          </div>
-          <div className="form-group">
-            <label>Due Date</label>
-            <input
-              onChange={this.handleOnChange}
-              type="date"
-              className="form-control"
-              name="dateReturned"
-              value={dateReturned}
-            />
-            {dateReturned_err && (
-              <div className="alert alert-danger">{dateReturned_err}</div>
-            )}
-          </div>
-          <div className="form-group">
-            <label>Rental Fee</label>
-            <input
-              onChange={this.handleOnChange}
-              type="text"
-              className="form-control"
-              name="rentalFee"
-              value={rentalFee}
-            />
-            {rentalFee_err && (
-              <div className="alert alert-danger">{rentalFee_err}</div>
-            )}
-          </div>
-          <button
-            onClick={this.handleSaveRental}
-            className="btn btn-primary btn-sm"
-          >
-            Save
-          </button>
-        </form>
+      <div
+        className="row"
+        style={{
+          backgroundImage: `url(${CoverImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "fixed",
+          height: 937,
+          width: 1925,
+          marginLeft: -5,
+        }}
+      >
+        <div className="container mt-100">
+          <form style={{ fontSize: 20, fontWeight: 640 }}>
+            <div className="form-group">
+              <label>Customer Name</label>
+              <Select
+                onChange={this.handleChangeCustomer}
+                value={customerId}
+                options={options_customer}
+                placeholder={selectedValuePlaceholderCustomer}
+              />
+              {customerId_err && (
+                <div className="alert alert-danger">{customerId_err}</div>
+              )}
+            </div>
+            <div className="form-group">
+              <label>Movie Name</label>
+              <Select
+                onChange={this.handleChangeMovie}
+                value={movieId}
+                options={options_movie}
+                placeholder={selectedValuePlaceholderMovie}
+              />
+              {movieId_err && (
+                <div className="alert alert-danger">{movieId_err}</div>
+              )}
+            </div>
+            <div className="form-group">
+              <label>Due Date</label>
+              <input
+                onChange={this.handleOnChange}
+                type="date"
+                className="form-control"
+                style={{ fontSize: 20, fontWeight: 640 }}
+                name="dateReturned"
+                value={dateReturned}
+              />
+              {dateReturned_err && (
+                <div className="alert alert-danger">{dateReturned_err}</div>
+              )}
+            </div>
+            <div className="form-group">
+              <label>Rental Fee</label>
+              <input
+                onChange={this.handleOnChange}
+                type="text"
+                className="form-control"
+                style={{ fontSize: 20, fontWeight: 640 }}
+                name="rentalFee"
+                value={rentalFee}
+              />
+              {rentalFee_err && (
+                <div className="alert alert-danger">{rentalFee_err}</div>
+              )}
+            </div>
+            <button
+              onClick={this.handleSaveRental}
+              className="btn btn-primary btn-sm"
+            >
+              Save
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

@@ -9,11 +9,10 @@ import LoginForm from "./components/common/login_form";
 import LogOut from "./components/common/log_out";
 import ProtectedRoute from "./components/common/protected_route";
 import GenreForm from "./components/genre_form";
-import GenreSettings from "./components/genre_settings";
 import Rentals from "./components/rentals";
-import "./App.css";
 import RentalForm from "./components/rental_form";
 import CustomerForm from "./components/customer_form";
+import "./App.css";
 
 class App extends Component {
   state = {};
@@ -32,7 +31,6 @@ class App extends Component {
         <div className="content">
           <Switch>
             <ProtectedRoute path="/movie/:id" component={MovieForm} />
-            <ProtectedRoute path="/genre" component={GenreForm} />
             <ProtectedRoute path="/customers" component={CustomerForm} />
             <ProtectedRoute path="/rentals" component={Rentals} />
             <ProtectedRoute path="/rental_form" component={RentalForm} />
@@ -40,8 +38,8 @@ class App extends Component {
             <Route path="/login" component={LoginForm} />
             <Route path="/logout" component={LogOut} />
             <Route
-              path="/genre_settings"
-              render={(props) => <GenreSettings {...props} user={user} />}
+              path="/genre"
+              render={(props) => <GenreForm {...props} user={user} />}
             />
             <Route
               path="/"

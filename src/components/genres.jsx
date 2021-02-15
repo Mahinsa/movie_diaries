@@ -1,5 +1,4 @@
 import React from "react";
-import genreService from "../services/genreService";
 import "./css/common.css";
 
 const Genres = (props) => {
@@ -18,7 +17,12 @@ const Genres = (props) => {
                     ? "list-group-item active"
                     : "list-group-item"
                 }
-                style={{ fontWeight: 500, textAlign: "center", fontSize: 21 }}
+                style={{
+                  fontWeight: 500,
+                  textAlign: "center",
+                  fontSize: 21,
+                  cursor: "pointer",
+                }}
               >
                 {genre.name}
               </a>
